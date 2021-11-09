@@ -5,7 +5,7 @@ const cryptoApiHeaders = {
     'coinranking744c47e50e826568384576f9f391c7721f7b5b0d5c90d151',
 }
 
-const baseUrl = '/v2'
+const baseUrl = 'https://api.coinranking.com/v2'
 // const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 // const baseUrl = proxyUrl + basesUrl
 
