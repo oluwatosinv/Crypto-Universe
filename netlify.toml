@@ -1,9 +1,9 @@
-# The following redirect is intended for use with most SPAs that handle
-# routing internally.
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/"
+  to = "https://api.coinranking.com/v2"
   status = 200
+  force = true
+  headers = {X-From = "Netlify"}
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
