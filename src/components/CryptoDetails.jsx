@@ -110,7 +110,9 @@ const CryptoDetails = () => {
         onChange={(value) => setTimeperiod(value)}
       >
         {time.map((date, i) => (
-          <Option key={i}>{date}</Option>
+          <Option key={i} value={date}>
+            {date}
+          </Option>
         ))}
       </Select>
       <LineChart

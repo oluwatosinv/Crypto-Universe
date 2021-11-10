@@ -11,15 +11,15 @@ const { Title } = Typography
 
 const Homepage = () => {
   const { data, isFetching } = useGetCryptosQuery(10)
-  console.log(data)
+  // console.log(data)
 
-  const globalStats = data?.data?.stats
+  // const globalStats = data?.data?.stats
 
   if (isFetching) return 'Loading ....'
 
   return (
     <>
-      <Title level={2} className='Heading'>
+      {/* <Title level={2} className='Heading'>
         Global Crypto Stats
       </Title>
       <Row>
@@ -51,6 +51,8 @@ const Homepage = () => {
           />
         </Col>
       </Row>
+      
+       */}
       <div className='home-heading-container'>
         <Title level={2} className='home-title'>
           Top 10 Crytocurrencies in the world
