@@ -6,7 +6,7 @@ const cryptoApiHeaders = {
 }
 
 const basesUrl = 'https://api.coinranking.com/v2'
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
+const proxyUrl = 'https://thingproxy.freeboard.io/fetch/'
 const baseUrl = proxyUrl + basesUrl
 
 const createRequest = (url) => ({ url, headers: cryptoApiHeaders })
