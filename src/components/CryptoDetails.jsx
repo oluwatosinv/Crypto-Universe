@@ -25,9 +25,10 @@ const { Option } = Select
 
 const CryptoDetails = () => {
   const { coinId } = useParams()
-  const [timeperiod, setTimeperiod] = useState('7d')
+  const [timeperiod, setTimeperiod] = useState('7')
+  const [date1, setDate1] = useState('')
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId)
-  //const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod })
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod })
   console.log(coinId)
   console.log(data)
 
@@ -35,9 +36,9 @@ const CryptoDetails = () => {
 
   const cryptoDetails = data
 
-  // console.log(data)
-
-  // const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y']
+  console.log('coin history', coinHistory.prices[0])
+  console.log('coin history', coinHistory)
+  const time = ['1', '3', '7', '31', '91', '186', '365', '1095', '1825']
 
   const stats = [
     {
@@ -108,6 +109,7 @@ const CryptoDetails = () => {
       icon: <ExclamationCircleOutlined />,
     },
   ]
+
   return (
     <Col className='coin-detail-container'>
       <Col className='coin-heading-container'>
@@ -119,23 +121,64 @@ const CryptoDetails = () => {
           market cap and supply.
         </p>
       </Col>
-      {/*<Select
+      <Select
         defaultValue='7d'
         className='select-timeperiod'
         placeholder='Select Timeperiod'
         onChange={(value) => setTimeperiod(value)}
       >
-        {time.map((date, i) => (
+        {/* {time.map((date, i) => (
           <Option key={i} value={date}>
             {date}
           </Option>
-        ))}
+        ))} */}
+        {time.map((date, i) =>
+          date === '1' ? (
+            <Option key={i} value={date}>
+              1 day
+            </Option>
+          ) : date === `3` ? (
+            <Option key={i} value={date}>
+              3 days
+            </Option>
+          ) : date === `7` ? (
+            <Option key={i} value={date}>
+              7 days
+            </Option>
+          ) : date === `31` ? (
+            <Option key={i} value={date}>
+              1 month
+            </Option>
+          ) : date === `91` ? (
+            <Option key={i} value={date}>
+              3 months
+            </Option>
+          ) : date === `186` ? (
+            <Option key={i} value={date}>
+              6 months
+            </Option>
+          ) : date === `365` ? (
+            <Option key={i} value={date}>
+              1 year
+            </Option>
+          ) : date === `1095` ? (
+            <Option key={i} value={date}>
+              3 years
+            </Option>
+          ) : (
+            <Option key={i} value={date}>
+              5 years
+            </Option>
+          )
+        )}
       </Select>
+
       <LineChart
+        cryptoDetails={cryptoDetails}
         coinHistory={coinHistory}
-        currentPrice={millify(cryptoDetails.price)}
+        currentPrice={millify(cryptoDetails?.market_data?.current_price?.usd)}
         coinName={cryptoDetails.name}
-        />*/}
+      />
       <Col className='stats-container'>
         <Col className='coin-value-statistics'>
           <Col className='coin-value-statistics-heading'>
@@ -179,18 +222,18 @@ const CryptoDetails = () => {
         </Col>
       </Col>
 
-      <Col className='coin-desc-link'>
-        <Row className='coin-desc'>
+      <Col>
+        <div className='coin-desc'>
           <Title level={3} className='coin-details-heading'>
             What is {cryptoDetails.name}?
           </Title>
           {HTMLReactParser(cryptoDetails.description.en)}
-        </Row>
-        <Col className='coin-links'>
+        </div>
+        {/* <Col className='coin-links'>
           <Title level={3} className='coin-details-heading'>
             {cryptoDetails.name} Links
           </Title>
-          {/* {cryptoDetails.links?.map((link, index) => (
+          {cryptoDetails.links?.map((link, index) => (
             <Row className='coin-link' key={index}>
               <Title level={5} className='link-name'>
                 {link.type}
@@ -199,8 +242,8 @@ const CryptoDetails = () => {
                 {link.name}
               </a>
             </Row>
-          ))} */}
-        </Col>
+          ))}
+        </Col> */}
       </Col>
     </Col>
   )
