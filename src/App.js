@@ -24,10 +24,9 @@ function App() {
               {/* <Hompage />
               </Route> */}
               <Route exact path='/exchanges' element={<Exchanges />} />
-
               <Route
                 exact
-                path='/crytocurrencies'
+                path='/cryptocurrencies'
                 element={<Crytocurrencies />}
               />
 
