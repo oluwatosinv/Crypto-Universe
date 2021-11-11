@@ -19,6 +19,7 @@ import {
   useGetCryptoHistoryQuery,
 } from '../services/crytoApi'
 import LineChart from './LineChart'
+import Loader from './Loader'
 
 const { Title, Text } = Typography
 const { Option } = Select
@@ -26,13 +27,13 @@ const { Option } = Select
 const CryptoDetails = () => {
   const { coinId } = useParams()
   const [timeperiod, setTimeperiod] = useState('7')
-  const [date1, setDate1] = useState('')
+
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId)
   const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod })
-  console.log(coinId)
-  console.log(data)
+  // console.log(coinId)
+  // console.log(data)
 
-  if (isFetching) return 'Loading ..'
+  if (isFetching) return <Loader />
 
   const cryptoDetails = data
 

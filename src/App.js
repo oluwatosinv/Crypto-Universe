@@ -43,7 +43,7 @@ function App() {
             level={5}
             style={{ color: 'white', textAlign: 'center' }}
           >
-            Cryto Verse
+            Cryto Universe
             <br />
             All right reserved
           </Typography.Title>

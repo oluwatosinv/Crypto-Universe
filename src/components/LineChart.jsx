@@ -6,21 +6,15 @@ const { Title } = Typography
 const LineChart = ({ coinHistory, currentPrice, coinName, cryptoDetails }) => {
   const coinPrice = []
   const coinTimestamp = []
-  console.log('object: g', coinHistory?.prices)
+  // console.log('object: g', coinHistory?.prices)
 
   for (let i = 0; i < coinHistory?.prices.length; i += 1) {
     coinPrice.push(coinHistory?.prices[i][1])
     coinTimestamp.push(new Date(coinHistory?.prices[i][0]).toLocaleDateString())
   }
-  console.log('coin prices:', coinPrice)
+  //console.log('coin prices:', coinPrice)
 
-  // for (let i = 0; i < coinHistory?.prices.length; i += 1) {
-  //   coinTimestamp.push(
-  //     new Date(coinHistory?.prices[i][0]).toLocaleDateString()
-  //     // new Date(coinHistory?.prices[i][0].timestamp).toLocaleDateString()
-  //   )
-  // }
-  console.log('coin dates:', coinTimestamp)
+  //console.log('coin dates:', coinTimestamp)
   const data = {
     labels: coinTimestamp,
     datasets: [

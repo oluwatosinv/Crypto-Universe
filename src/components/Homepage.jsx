@@ -6,16 +6,17 @@ import { Row, Col, Typography, Statistic } from 'antd'
 
 import { useGetCryptosStatsQuery } from '../services/crytoApi'
 import { Crytocurrencies, News } from '.'
+import Loader from './Loader'
 
 const { Title } = Typography
 
 const Homepage = () => {
   const { data, isFetching } = useGetCryptosStatsQuery()
-  console.log('Global stats: ', data?.data)
+  // console.log('Global stats: ', data?.data)
 
   const globalStats = data?.data
 
-  if (isFetching) return 'Loading ....'
+  if (isFetching) return <Loader />
 
   return (
     <>

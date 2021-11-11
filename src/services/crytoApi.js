@@ -24,6 +24,9 @@ export const cryptoApi = createApi({
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${count}&page=1&sparkline=false`
         ),
     }),
+    getExchanges: builder.query({
+      query: () => createRequest('/exchanges?per_page=100'),
+    }),
     getCryptosStats: builder.query({
       query: () => createRequest(`/global`),
     }),
@@ -48,4 +51,5 @@ export const {
   useGetCryptoDetailsQuery,
   useGetCryptoHistoryQuery,
   useGetCryptosStatsQuery,
+  useGetExchangesQuery,
 } = cryptoApi
